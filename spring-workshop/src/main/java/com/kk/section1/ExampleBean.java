@@ -6,8 +6,10 @@ package com.kk.section1;
  */
 public class ExampleBean {
 	private String name;
-	
 
+	public ExampleBean() {
+		System.out.println("ExampleBean constructor called");
+	}
 	
 	public String getName() {
 		return name;
@@ -15,5 +17,14 @@ public class ExampleBean {
 	
 	public void setName(String name) {
 		this.name = name;
+		System.out.println("Setter called");
+	}
+	
+	public void init() {
+		System.out.println("Init method called");
+	}
+	
+	public void doDestroy() {
+		System.out.println("Destroy method called");
 	}
 }

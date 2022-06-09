@@ -23,5 +23,7 @@ public class HelloWorld {
 		// Elimizdeki bean tek oldugu icin ayni name print edilecektir, default scope singleton
 		ExampleBean bean2 = (ExampleBean)context.getBean("exampleBeanSection1");
 		System.out.println(bean2.getName());
+		
+		((ClassPathXmlApplicationContext) context).close();
 	}
 }
