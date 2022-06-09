@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 1. Beanlerde de Java gibi inheritance bulunmaktadir, Child Parentin ozelliklerini inherit etmektedir
  * 2. Bu islemi xml'de parenti belirterek verilebilmektedir
  * 3. Child ilgili kayit icin parentin fieldini ezebilmektedir
+ * 4. Classlar arasi inheritance iliskisi olmasa da Beanler uzerinden iliski tanimlandiginda Inherit edecektir
  * @author korayk
  */
 public class InheritanceBeanExample {
