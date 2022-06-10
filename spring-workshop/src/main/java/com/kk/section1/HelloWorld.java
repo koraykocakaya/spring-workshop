@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 1. Springin 2 IOC Containeri ApplcationContext ve BeanFactory, container componentlari yonetmek icin DI kullanir
+ * 1. Springin 2 IOC Containeri ApplicationContext ve BeanFactory, container componentlari yonetmek icin DI kullanir
  * 2. BeanFactory yerine ApplicationContext kullanmaktayiz (Context Factory'i kapsar)
  * @author korayk
  */
@@ -12,7 +12,7 @@ public class HelloWorld {
 	
 	public static void main(String[] args) {
 		
-		// beans.xml dosyasini contexte yukledik
+		// classpathteki beans.xml dosyasini contexte yukledik
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		
 		// hangi id verdiysek ona gore cekmeliyiz, factory design pattern
