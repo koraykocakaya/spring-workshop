@@ -9,6 +9,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 4. Default'ta required=true calisir yani bulamazsa hata atacaktir, bulamasa da calismasi icin (required=false) yeterli olacaktir
  * 5. Autowired otomatik olarak type uzerinden ilgili beani bulacaktir, birden fazla varsa isme bakacaktir bulamazsa hata atacaktir
  * 6. Ancak bu tip durumlar icin ilgili beande @Qualifier kullanarak hangi beani burada kullanacagimizi belirtebilmekteyiz
+ * 7. Annotation ile @PostConstruct ve @PreDestory da verebilmekteyiz
+ * 8. Setter veya property icin @Resource (name = "...") ile de inject edebilmekteyiz
  * @author korayk
  */
 public class AnnotationExample {

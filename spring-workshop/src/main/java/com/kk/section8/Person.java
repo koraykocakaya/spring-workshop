@@ -1,7 +1,5 @@
 package com.kk.section8;
 
-import org.springframework.beans.factory.annotation.Required;
-
 public class Person {
 
 	private String name;

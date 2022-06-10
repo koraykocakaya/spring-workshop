@@ -1,5 +1,9 @@
 package com.kk.section8;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -22,5 +26,19 @@ public class NotificationService {
 	
 	public EmailService getEmailService() {
 		return emailService;
+	}
+	
+	public void setEmailService(EmailService emailService) {
+		this.emailService = emailService;
+	}
+	
+	@PostConstruct
+	public void postConst() {
+		System.out.println("MessageService PostConstruct called");
+	}
+	
+	@PreDestroy
+	public void preDestroy() {
+		System.out.println("MessageService PreDestroy called");
 	}
 }
