@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * 1. Xml uzerinde inject etmek yerine Annotationlar ile de birbirine Inject edebiliriz
  * 2. Bunnu icin oncelikle XML'de <context:annotation-config/> eklememiz gerekmekte
- * 3. @Autowired property, constructor veya setter'a yazilarak bu beanin Inject edilmesini saglar
+ * 3. @Autowired property, constructor veya setter'a yazilarak bu beanin Inject edilmesini saglar, constructorda kullanirsak tum argumentslar zorunlu olacaktir
  * 4. Default'ta required=true calisir yani bulamazsa hata atacaktir, bulamasa da calismasi icin (required=false) yeterli olacaktir
  * 5. Autowired otomatik olarak type uzerinden ilgili beani bulacaktir, birden fazla varsa isme bakacaktir bulamazsa hata atacaktir
  * 6. Ancak bu tip durumlar icin ilgili beande @Qualifier kullanarak hangi beani burada kullanacagimizi belirtebilmekteyiz
