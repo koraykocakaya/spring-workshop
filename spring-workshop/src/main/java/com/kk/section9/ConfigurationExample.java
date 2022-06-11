@@ -11,7 +11,7 @@ import org.springframework.context.support.AbstractApplicationContext;
  * 2. Burada JAva ile conf verdigimiz icin AnnotationConfigApplicationContext ile IOC Containeri initialize etmekteyiz
  * 3. Configuration classi icerisinde @Bean ile metot isminde ilgili beanler yaratimaktadir, bu beanlere class uzerinden de erisilebilmektedir
  * 4. Burada ek olarak @Bean("...") vererek Bean'e ayrica isim verilebilmektedir
- * 5. Birden cok Configuration classi verilebilmektedir, bunlar register ile contexte yuklenebilmektedir
+ * 5. Birden cok Configuration classi verilebilmektedir, bunlar register ile contexte yuklenebilmektedir, register sonrasi refresh cagirlmasi gerekmektedir
  * 6. Ayrica Configuration classlarinda @Import annotationu ile farklı bir Configuration classi da import edilebilir ve ilgili beanler kullabilecektir
  * 7. Beanleri sadece @Bean ile Config classi uzerinden yaratmak sorun olabilecegi icin @ComponentScan ile belirli bir package taratilabilmektedir
  * 8. Bu package icerisinde @Component veya @Service ile isaretlenen class icin Bean yaratilip contexte yuklenecektir
