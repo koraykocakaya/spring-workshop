@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
  * @author korayk
  */
 @Configuration
-@ComponentScan(basePackages = "com.kk.section9.bean")
+@ComponentScan(basePackages = "com.kk.section09.bean")
 @PropertySource("app.properties")
 public class ApplicationHelperConfig {
 
