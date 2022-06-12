@@ -31,4 +31,8 @@ public class Student {
 		this.schoolName = schoolName;
 	}
 	
+	public void getError() throws IllegalArgumentException {
+		throw new IllegalArgumentException("Hata");
+	}
+	
 }

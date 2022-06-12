@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -33,11 +34,11 @@ public class LogAspectJ {
 	public void afterReturningAdvice(JoinPoint jp, Object retVal){
 		System.out.println("After Returning Advice for " + jp.getSignature() + ", value: " + retVal);
 	}
-//	
-//	@AfterThrowing("selectPointCut()")
-//	public void afterThrowingAdvice(Exception ex){
-//		System.out.println("After Throwing Advice: " + ex.toString());
-//	}
+	
+	@AfterThrowing("selectPointCut()")
+	public void afterThrowingAdvice(Exception ex){
+		System.out.println("After Throwing Advice: " + ex.toString());
+	}
 	
 	@Around("selectPointCut()")
 	public void aroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable{
