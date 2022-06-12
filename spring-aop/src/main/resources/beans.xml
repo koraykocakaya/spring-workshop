@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+   xmlns:aop = "http://www.springframework.org/schema/aop"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+   http://www.springframework.org/schema/aop 
+   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<aop:config>
+		<aop:aspect id="logAspect" ref="logAspectBean">
+			<aop:pointcut expression="execution(* com.kk.aop.section02.*.*(..))" id="select"/>
+			<aop:before method="beforeAdvice" pointcut-ref="select"/>
+			<aop:after method="afterAdvice" pointcut-ref="select"/>
+			<aop:after-returning method="afterReturningAdvice" pointcut-ref="select" returning="retVal"/>
+			<aop:after-throwing method="afterThrowingAdvice" pointcut-ref="select" throwing="ex"/>
+			
+			
+			
+			<aop:pointcut expression="execution(* com.kk.aop.section02.Person.getName(..))" id="selectName"/>
+			<aop:before method="beforeNameAdvice" pointcut-ref="selectName"/>
+			<aop:around method="aroundNameAdvice" pointcut-ref="selectName"/>
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="person" class="com.kk.aop.section02.Person">
+		<property name="name" value="Koray" />
+		<property name="age" value="30" />
+	</bean>
+	
+	<bean id="company" class="com.kk.aop.section02.Company">
+		<property name="name" value="ASD"/>
+	</bean>
+	
+	<bean id="logAspectBean" class="com.kk.aop.section02.LogAspect">
+	</bean>
+</beans>
