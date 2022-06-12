@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan("com.kk.aop.section03.Bean")
+@ComponentScan("com.kk.aop.section03.aspect")
 @EnableAspectJAutoProxy
 public class ApplicationConfig {
 	

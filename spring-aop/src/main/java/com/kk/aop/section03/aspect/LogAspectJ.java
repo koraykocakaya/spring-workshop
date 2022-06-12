@@ -1,4 +1,4 @@
-package com.kk.aop.section03.Bean;
+package com.kk.aop.section03.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -35,7 +35,7 @@ public class LogAspectJ {
 		System.out.println("After Returning Advice for " + jp.getSignature() + ", value: " + retVal);
 	}
 	
-	@AfterThrowing("selectPointCut()")
+	@AfterThrowing(pointcut = "selectPointCut()", throwing = "ex")
 	public void afterThrowingAdvice(Exception ex){
 		System.out.println("After Throwing Advice: " + ex.toString());
 	}
