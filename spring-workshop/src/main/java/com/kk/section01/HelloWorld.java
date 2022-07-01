@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 1. Springin 2 IOC Containeri ApplicationContext ve BeanFactory, container componentlari yonetmek icin DI kullanir
+ * 1. Springin 2 IOC Containeri ApplicationContext ve BeanFactory, container componentlari (bean) yonetmek icin DI kullanir
  * 2. BeanFactory yerine ApplicationContext kullanmaktayiz (Context Factory'i kapsar)
  * @author korayk
  */
