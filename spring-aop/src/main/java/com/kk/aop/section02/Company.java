@@ -11,8 +11,4 @@ public class Company {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public void getBudget() {
-		throw new IllegalArgumentException("Budget not visible");
-	}
 }
