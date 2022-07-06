@@ -1,4 +1,4 @@
-package com.kk.aop.section03.Bean;
+package com.kk.aop.section03.bean;
 
 public class Student {
 

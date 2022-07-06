@@ -23,7 +23,6 @@ public class AopRunningExample {
 		
 		Company c = context.getBean(Company.class);
 		c.getName();
-		c.getBudget();
 		
 		((ClassPathXmlApplicationContext)context).close();
 	}

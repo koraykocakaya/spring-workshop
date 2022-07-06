@@ -10,7 +10,7 @@
 
 	<aop:config>
 		<aop:aspect id="logAspect" ref="logAspectBean">
-			<aop:pointcut expression="execution(* com.kk.aop.section02.*.*(..))" id="select"/>
+			<aop:pointcut expression="execution(* com.kk.aop.section02.Person.*(..))" id="select"/>
 			<aop:before method="beforeAdvice" pointcut-ref="select"/>
 			<aop:after method="afterAdvice" pointcut-ref="select"/>
 			<aop:after-returning method="afterReturningAdvice" pointcut-ref="select" returning="retVal"/>

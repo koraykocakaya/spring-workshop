@@ -1,6 +1,6 @@
 package com.kk.aop.section03;
 
-import com.kk.aop.section03.Bean.Student;
+import com.kk.aop.section03.bean.Student;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
