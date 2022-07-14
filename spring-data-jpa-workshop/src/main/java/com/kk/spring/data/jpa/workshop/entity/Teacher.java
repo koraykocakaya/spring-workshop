@@ -27,4 +27,5 @@ public class Teacher {
 	
 	@OneToMany
 	private List<Course> courses;
+	
 }
