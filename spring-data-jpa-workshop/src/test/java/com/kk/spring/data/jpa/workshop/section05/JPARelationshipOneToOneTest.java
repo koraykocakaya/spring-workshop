@@ -20,14 +20,16 @@ import com.kk.spring.data.jpa.workshop.repository.CourseRepository;
  *  bu ornekte once Course yaratip, sonra CourseMaterial yaratip ona baglayacaktir (CascadeType.ALL veya CascadeType.PERSIST ile)
  * 6. Entity'i get ederken bagli oldugu Entity Fetch Type'i Eager veya Lazy olarak ayarlanabilmektedir, 
  *  Eager oldugunda ana entity yuklenirken anlik yuklenir, Lazy oldugunda ise yuklenmez
- * 7. Ilgili iliskileri bidirectiobal olarak da kullanabilmekteyiz, bunun icin ornekteki gibi 
- *  Course sinifina CourseMaterial ekleyip bunu mappedBy ile isaretlememiz yeterli olacaktir
+ * 7. Yuklenmemis Enttiy get etmeye calistigimizda da LazyInitializationException alacaktir
+ * 8. Ilgili iliskileri bidirectional olarak da kullanabilmekteyiz, bunun icin ornekteki gibi 
+ *  Course sinifina CourseMaterial ekleyip bunu mappedBy ile isaretlememiz yeterli olacaktir (CourseMaterial'de attribute'a verdigimiz isimle belirtmekteyiz)
  *  Digerindeki gibi burada da FetchType ayrica belirtilebilmektedir 
+ * 9. Burada CourseMaterialde de oldugu gibi optional=false setlersek bagli bir course olmadan save alamayacaktir
  * @author korayk
  *
  */
 @SpringBootTest
-public class JPARelationshipTest {
+public class JPARelationshipOneToOneTest {
 
 	@Autowired
 	private CourseMaterialRepository courseMaterialRepository;
@@ -54,6 +56,7 @@ public class JPARelationshipTest {
 	public void listCourseMaterialTest() {
 		List<CourseMaterial> courseMaterialList = courseMaterialRepository.findAll();
 		System.out.println(courseMaterialList);
+		System.out.println(courseMaterialList.get(0).getCourse());
 		
 	}
 	
