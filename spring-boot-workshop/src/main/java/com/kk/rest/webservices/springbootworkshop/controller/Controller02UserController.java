@@ -36,7 +36,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
  * @author korayk
  */
 @RestController()
-public class UserController {
+public class Controller02UserController {
 
 	@Autowired
 	UserDAOService userDAOService;

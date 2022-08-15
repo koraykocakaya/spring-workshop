@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
   * @author korayk
  */
 @RestController
-public class HelloWorldController {
+public class Controller01HelloWorldController {
 
 	@RequestMapping(method = RequestMethod.GET, path = "/hello-world")
 	public String helloWorld() {

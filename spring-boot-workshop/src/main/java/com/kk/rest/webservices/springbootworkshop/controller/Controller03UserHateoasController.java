@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author korayk
  */
 @RestController
-public class UserHateoasController {
+public class Controller03UserHateoasController {
 
 	@Autowired
 	MessageSource messageSource;
