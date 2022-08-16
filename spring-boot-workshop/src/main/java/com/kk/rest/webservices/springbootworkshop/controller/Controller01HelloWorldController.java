@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  *  GET istegi geldiginde ilgili String donecek sekilde ayarlamis olduk
  * 3. Direkt @GetMapping ile methodu da verebiliriz
  * 4. Direkt bir obje de donebiliriz burada JSON tipinde objeyi donecektir 
- *  ayrica bu noktada objede getterlarin olmasi onemli olackatir, bu ornekte de getMessage metodu olmasa hata atacaktir
+ *  ayrica bu noktada objede getterlarin olmasi onemli olacaktir, bu ornekte de getMessage metodu olmasa hata atacaktir
  * 5. Spring bootta da arka planda dispatcher servlet calismakta ve bu mapping vs. islemlerini handle etmekte
  * 6. PathVariable ile istege parametre gecilebilmektedir, burada da id ile gelen variable name'e setlenecek sekilde gelistirme yapildi
  * 

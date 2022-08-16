@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  * 2. Burada ResponseEntity return eden metoda @ExceptionHandler(Exception.class) ekledik ve bu sekilde hata alan tum responselar bunun uzerinden yaratildi
  * 3. Burada kullanilan @ControllerAdvice tum controllerlar icin kullanilmasi icin eklendi
  * 4. Ek olarak tek bir Exception icin de ayri metot yardimiyla donecek ResponseEntity degistirilebilmektedir
- * 5. Validation icin de handleMethodArgumentNotValid bulunmaktadir, ancak daha deayli bir response verebilmek icin
+ * 5. Validation icin de handleMethodArgumentNotValid bulunmaktadir, ancak daha detayli bir response verebilmek icin
  *  bu metodu Override edip, aciklayici response donecek sekilde gelistirme yapilabilmektedir
  * @author korayk
  */
