@@ -1,0 +1,226 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 16777216 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3466), pid=147480, tid=205016
+#
+# JRE version:  (16.0.1+9) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (16.0.1+9-24, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -ea -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 51301 -testLoaderClass org.eclipse.jdt.internal.junit5.runner.JUnit5TestLoader -loaderpluginname org.eclipse.jdt.junit5.runtime -test com.kk.spring.data.jpa.workshop.section07.PaginationSortingTest:findFromCustomQueryWithPagination
+
+Host: Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz, 8 cores, 63G,  Windows 8.1 , 64 bit Build 9600 (6.3.9600.17415)
+Time: Tue Aug 23 11:12:50 2022 Belarus Standard Time elapsed time: 2.016865 seconds (0d 0h 0m 2s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000e2ca5d35a0):  JavaThread "Unknown thread" [_thread_in_vm, id=205016, stack(0x000000e2c9c60000,0x000000e2c9d60000)]
+
+Stack: [0x000000e2c9c60000,0x000000e2c9d60000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6687ca]
+V  [jvm.dll+0x7ca3c9]
+V  [jvm.dll+0x7cbb53]
+V  [jvm.dll+0x7cc1b3]
+V  [jvm.dll+0x242ea5]
+V  [jvm.dll+0x665589]
+V  [jvm.dll+0x65a175]
+V  [jvm.dll+0x2fc5ab]
+V  [jvm.dll+0x3037a6]
+V  [jvm.dll+0x353018]
+V  [jvm.dll+0x35321f]
+V  [jvm.dll+0x2d3618]
+V  [jvm.dll+0x2d4854]
+V  [jvm.dll+0x79ccb1]
+V  [jvm.dll+0x360de1]
+V  [jvm.dll+0x77a990]
+V  [jvm.dll+0x3e55af]
+V  [jvm.dll+0x3e7081]
+C  [jli.dll+0x52fb]
+C  [ucrtbase.DLL+0x1d912]
+C  [KERNEL32.dll+0x13d2]
+C  [ntdll.dll+0x154f4]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ff9d588cbb8, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000000e2e10b0a10 GCTaskThread "GC Thread#0" [stack: 0x000000e2f7160000,0x000000e2f7260000] [id=180260]
+  0x000000e2ca61e730 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000e2f7260000,0x000000e2f7360000] [id=163640]
+  0x000000e2ca61f130 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000e2f7360000,0x000000e2f7460000] [id=176328]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ff9d50644d7]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000000e2ca5cfea0] Heap_lock - owner thread: 0x000000e2ca5d35a0
+
+Heap address: 0x0000000402800000, size: 16344 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x0000000402800000, 0x0000000800000000)
+  region size 8192K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ff9d54424ed]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.008 Loaded shared library D:\java-16\bin\java.dll
+
+
+Dynamic libraries:
+0x00007ff79dbe0000 - 0x00007ff79dbf0000 	D:\java-16\bin\javaw.exe
+0x00007ffa15360000 - 0x00007ffa1550d000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffa14240000 - 0x00007ffa1437e000 	C:\Windows\system32\KERNEL32.dll
+0x00007ffa12380000 - 0x00007ffa124a7000 	C:\Windows\system32\hmpalert.dll
+0x00007ffa128d0000 - 0x00007ffa129e6000 	C:\Windows\system32\KERNELBASE.dll
+0x00007ffa04da0000 - 0x00007ffa04db8000 	D:\java-16\bin\jli.dll
+0x00007ff9fdcc0000 - 0x00007ff9fdcd9000 	D:\java-16\bin\VCRUNTIME140.dll
+0x00007ffa04e10000 - 0x00007ffa04e14000 	D:\java-16\bin\api-ms-win-crt-stdio-l1-1-0.dll
+0x00007ffa04d60000 - 0x00007ffa04d64000 	D:\java-16\bin\api-ms-win-crt-runtime-l1-1-0.dll
+0x00007ffa03e80000 - 0x00007ffa03e83000 	D:\java-16\bin\api-ms-win-crt-environment-l1-1-0.dll
+0x00007ffa02590000 - 0x00007ffa02595000 	D:\java-16\bin\api-ms-win-crt-math-l1-1-0.dll
+0x00007ffa01930000 - 0x00007ffa01933000 	D:\java-16\bin\api-ms-win-crt-locale-l1-1-0.dll
+0x00007ff9fdc30000 - 0x00007ff9fdc33000 	D:\java-16\bin\api-ms-win-crt-heap-l1-1-0.dll
+0x00007ffa129f0000 - 0x00007ffa12a9a000 	C:\Windows\system32\ADVAPI32.dll
+0x00007ffa0fd80000 - 0x00007ffa0fffb000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.18006_none_623f33d3ecbe86e8\COMCTL32.dll
+0x00007ffa14c80000 - 0x00007ffa14df7000 	C:\Windows\system32\USER32.dll
+0x00007ffa10cc0000 - 0x00007ffa10cca000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ff9fdc20000 - 0x00007ff9fdc23000 	D:\java-16\bin\api-ms-win-crt-filesystem-l1-1-0.dll
+0x00007ff9fdc10000 - 0x00007ff9fdc14000 	D:\java-16\bin\api-ms-win-crt-string-l1-1-0.dll
+0x00007ff9fdc00000 - 0x00007ff9fdc04000 	D:\java-16\bin\api-ms-win-crt-convert-l1-1-0.dll
+0x00007ffa14130000 - 0x00007ffa141da000 	C:\Windows\system32\msvcrt.dll
+0x00007ffa152f0000 - 0x00007ffa15349000 	C:\Windows\SYSTEM32\sechost.dll
+0x00007ffa143c0000 - 0x00007ffa14500000 	C:\Windows\system32\RPCRT4.dll
+0x00007ffa14620000 - 0x00007ffa1476b000 	C:\Windows\system32\GDI32.dll
+0x00007ff9d90b0000 - 0x00007ff9d91aa000 	D:\java-16\bin\ucrtbase.DLL
+0x00007ffa12560000 - 0x00007ffa1258e000 	C:\Windows\system32\SspiCli.dll
+0x00007ffa14c40000 - 0x00007ffa14c76000 	C:\Windows\system32\IMM32.DLL
+0x00007ffa13fd0000 - 0x00007ffa14121000 	C:\Windows\system32\MSCTF.dll
+0x00007ffa12310000 - 0x00007ffa1234e000 	C:\Windows\system32\SophosAV\SOPHOS~1.DLL
+0x00007ffa0fa10000 - 0x00007ffa0fa1c000 	D:\java-16\bin\vcruntime140_1.dll
+0x00007ff9f3d60000 - 0x00007ff9f3df1000 	D:\java-16\bin\msvcp140.dll
+0x00007ff9fdbf0000 - 0x00007ff9fdbf3000 	D:\java-16\bin\api-ms-win-crt-time-l1-1-0.dll
+0x00007ff9fdbc0000 - 0x00007ff9fdbc3000 	D:\java-16\bin\api-ms-win-crt-utility-l1-1-0.dll
+0x00007ff9d4d80000 - 0x00007ff9d592b000 	D:\java-16\bin\server\jvm.dll
+0x00007ffa0a5c0000 - 0x00007ffa0a5c9000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffa05660000 - 0x00007ffa05682000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffa14c30000 - 0x00007ffa14c37000 	C:\Windows\system32\PSAPI.DLL
+0x00007ffa14500000 - 0x00007ffa1455a000 	C:\Windows\system32\WS2_32.dll
+0x00007ffa057a0000 - 0x00007ffa057ca000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x00007ffa14380000 - 0x00007ffa14389000 	C:\Windows\system32\NSI.dll
+0x00007ffa12770000 - 0x00007ffa127bf000 	C:\Windows\SYSTEM32\cfgmgr32.dll
+0x00007ffa10f50000 - 0x00007ffa10f78000 	C:\Windows\SYSTEM32\DEVOBJ.dll
+0x00007ffa0f430000 - 0x00007ffa0f43a000 	D:\java-16\bin\jimage.dll
+0x00007ffa02980000 - 0x00007ffa02b09000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffa022e0000 - 0x00007ffa02305000 	D:\java-16\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;D:\java-16\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.18006_none_623f33d3ecbe86e8;C:\Windows\system32\SophosAV;D:\java-16\bin\server
+
+VM Arguments:
+jvm_args: -ea -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
+java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 51301 -testLoaderClass org.eclipse.jdt.internal.junit5.runner.JUnit5TestLoader -loaderpluginname org.eclipse.jdt.junit5.runtime -test com.kk.spring.data.jpa.workshop.section07.PaginationSortingTest:findFromCustomQueryWithPagination
+java_class_path (initial): C:\Users\koray.kocakaya\git\spring-workshop\spring-data-jpa-workshop\target\test-classes;C:\Users\koray.kocakaya\git\spring-workshop\spring-data-jpa-workshop\target\classes;C:\Users\koray.kocakaya\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\2.7.1\spring-boot-starter-data-jpa-2.7.1.jar;C:\Users\koray.kocakaya\.m2\repository\org\springframework\boot\spring-boot-starter-aop\2.7.1\spring-boot-starter-aop-2.7.1.jar;C:\Users\koray.kocakaya\.m2\repository\org\springframework\spring-aop\5.3.21\spring-aop-5.3.21.jar;C:\Users\koray.kocakaya\.m2\repository\org\aspectj\aspectjweaver\1.9.7\aspectjweaver-1.9.7.jar;C:\Users\koray.kocakaya\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\2.7.1\spring-boot-starter-jdbc-2.7.1.jar;C:\Users\koray.kocakaya\.m2\repository\com\zaxxer\HikariCP\4.0.3\HikariCP-4.0.3.jar;C:\Users\koray.kocakaya\.m2\repository\org\springframework\spring-jdbc\5.3.21\spring-jdbc-5.3.21.jar;C:\Users\koray.kocakaya\.m2\repository\jakarta\transaction\jakarta.transaction-api\1.3.3\jakarta.transaction-api-1.3.3.jar;C:\Users\koray.kocakaya\.m2\repository\jakarta\persistence\jakarta.persistence-api\2.2.3\jakarta.persistence-api-2.2.3.jar;C:\Users\koray.kocakaya\.m2\repository\org\hibernate\hibernate-core\5.6.9.Final\hibernate-core-5.6.9.Final.jar;C:\Users\koray.kocakaya\.m2\repository\org\jboss\logging\jboss-logging\3.4.3.Final\jboss-logging-3.4.3.Final.jar;C:\Users\koray.kocakaya\.m2\repository\net\bytebuddy\byte-buddy\1.12.11\byte-buddy-1.12.11.jar;C:\Users\koray.kocakaya\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\koray.kocakaya\.m2\repository\org\jboss\jandex\2.4.2.Final\jandex-2.4.2.Final.jar;C:\Users\koray.kocakaya\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\koray.kocakaya\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.1.2.Final\hibernate-commons-annotations-5.1.2.Final.jar;C:\Users\koray.kocakaya\.m2\repository\org\glassfish\jaxb
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 8388608                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 1073741824                                {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 17137926144                               {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 8388608                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 17137926144                            {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_101
+PATH=D:/java-16/bin/server;D:/java-16/bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\PROGRA~2\Groovy\GROOVY~1.7\bin;C:\Program Files\Java\jdk1.8.0_101\bin;D:\Git\cmd;D:\Maven\apache-maven-3.8.4\bin;C:\Users\koray.kocakaya\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\koray.kocakaya\AppData\Local\Programs\Python\Python36-32\;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Program Files\Java\jdk1.8.0_101\bin;D:\Eclipse Photon\eclipse;
+USERNAME=korayk
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 8.1 , 64 bit Build 9600 (6.3.9600.17415)
+OS uptime: 121 days 20:41 hours
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 94 stepping 3 microcode 0x55, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, rtm, adx, fma, vzeroupper, clflush, clflushopt
+
+Memory: 4k page, system-wide physical 65350M (5184M free)
+TotalPageFile size 76293M (AvailPageFile size 16M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 1104M, peak: 1120M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (16.0.1+9-24) for windows-amd64 JRE (16.0.1+9-24), built on Mar 26 2021 19:31:42 by "mach5one" with MS VC++ 16.7 (VS2019)
+
+END.
