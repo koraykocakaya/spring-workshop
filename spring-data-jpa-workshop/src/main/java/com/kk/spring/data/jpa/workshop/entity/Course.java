@@ -34,6 +34,7 @@ public class Course {
 			strategy = GenerationType.AUTO
 	)
 	private Long courseId;
+	
 	private String title;
 	private Integer credit;
 	

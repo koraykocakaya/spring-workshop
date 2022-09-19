@@ -21,7 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 /**
- * 1. Burada digerinden farkli olarak PostMapping kullandik, metot User parametresi alacak sekilde yazildi
+ * 1. Burada digerinden farkli olarak PostMapping de kullandik, metot User parametresi alacak sekilde yazildi
  *  User'i Request'in bodysinde gonderecegimiz icin @RequestBody olarak isaretledik
  * 2. Postman'dan istek atarken de JSON olarak fieldlari gonderip tip olarak da
  *  application/json sectigimizde maplemede sorun olmadan istegi yapabildik
