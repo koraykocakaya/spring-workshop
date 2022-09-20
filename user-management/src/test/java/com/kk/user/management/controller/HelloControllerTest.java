@@ -44,12 +44,18 @@ class HelloControllerTest {
 			.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
+	
 	@Test
 	public void helloControllerTestDifferentUser() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/hello-login").with(SecurityMockMvcRequestPostProcessors.httpBasic("Koray", "12")))
 			.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
+	@Test
+	public void helloControllerTestDifferentUserWithBcrypt() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/hello-login").with(SecurityMockMvcRequestPostProcessors.httpBasic("KorayB", "12")))
+			.andExpect(MockMvcResultMatchers.status().isOk());
+	}
 
 
 }

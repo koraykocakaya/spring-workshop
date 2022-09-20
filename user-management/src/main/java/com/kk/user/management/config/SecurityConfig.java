@@ -3,15 +3,16 @@ package com.kk.user.management.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.kk.user.management.security.CustomPasswordEncoderFactories;
 
 /**
  * 
@@ -20,7 +21,13 @@ import org.springframework.security.web.SecurityFilterChain;
  */
 @EnableWebSecurity
 @Configuration
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig{
+	
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return CustomPasswordEncoderFactories.createDelegatingPasswordEncoder();
+	}
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -46,11 +53,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	
 	@Bean
-	public UserDetailsService userDetailsService(AuthenticationManagerBuilder auth) {
+	public UserDetailsService userDetailsService() {
 		System.out.println("User details called");
-		UserDetails user1 = User.withDefaultPasswordEncoder()
-				 .username("Koray")
-				 .password("12")
+		UserDetails user1 = User.withUsername("Koray")
+				 .password("{ldap}{SSHA}PXU6F6h+35H4Pw7V+v3cjGtVZvKo9G8WPsFMLQ==") // LDAP 12
 				 .roles("ADMIN")
 				 .build();
 		
@@ -61,7 +67,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				 .roles("ADMIN")
 				 .build();
 		
-		return new InMemoryUserDetailsManager(user1, user2);
+		UserDetails user3 = User.withUsername("KorayB")
+				 .password("{hard-bcrypt}$2a$10$NPNBDd8gqOsVCx4KvXbKzu8lP9RSF1GpVKu.ZQlaxVgKb0m/QfyOm") // bcrypt 12, koray custom tanmilandi
+				 .roles("ADMIN")
+				 .build();
+		// $2a$15$gY1aOGRstnC.BKt2ew6O7uxvhT8oWaDUXe6Dj3wFc80bVDpDjbFGK
+		return new InMemoryUserDetailsManager(user1, user2, user3);
 	}
 	
 //	@Bean
