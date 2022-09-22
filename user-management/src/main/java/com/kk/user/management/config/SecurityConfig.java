@@ -3,16 +3,22 @@ package com.kk.user.management.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.kk.user.management.security.CustomPasswordEncoderFactories;
+import com.kk.user.management.security.RestHeaderAuthFilter;
 
 /**
  * 
@@ -23,6 +29,11 @@ import com.kk.user.management.security.CustomPasswordEncoderFactories;
 @Configuration
 public class SecurityConfig{
 	
+	public RestHeaderAuthFilter restHeaderAuthFilter(AuthenticationManager authenticationManager) throws Exception{
+		RestHeaderAuthFilter filter = new RestHeaderAuthFilter(new AntPathRequestMatcher("/loginCustomAuth/**"));
+		filter.setAuthenticationManager(authenticationManager);
+		return filter;
+	}
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -31,6 +42,7 @@ public class SecurityConfig{
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
 		
 		System.out.println("Filter Chain ");
 //		http.authorizeRequests()
@@ -49,6 +61,7 @@ public class SecurityConfig{
 		.and()
 		.httpBasic();
 
+		http.addFilterAfter(restHeaderAuthFilter(authenticationManagerBuilder.build()), UsernamePasswordAuthenticationFilter.class);
 	    return http.build();
 	}
 	
@@ -73,6 +86,15 @@ public class SecurityConfig{
 				 .build();
 		// $2a$15$gY1aOGRstnC.BKt2ew6O7uxvhT8oWaDUXe6Dj3wFc80bVDpDjbFGK
 		return new InMemoryUserDetailsManager(user1, user2, user3);
+	}
+	
+	public AuthenticationManager authManager(HttpSecurity http) 
+	  throws Exception {
+	    return http.getSharedObject(AuthenticationManagerBuilder.class)
+	      .userDetailsService(userDetailsService())
+	      .passwordEncoder(passwordEncoder())
+	      .and()
+	      .build();
 	}
 	
 //	@Bean
