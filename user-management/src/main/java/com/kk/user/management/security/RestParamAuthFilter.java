@@ -4,19 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-public class RestHeaderAuthFilter extends AbstractRestAuthFilter {
+public class RestParamAuthFilter extends AbstractRestAuthFilter {
 
-	public RestHeaderAuthFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
+	public RestParamAuthFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
 		super(requiresAuthenticationRequestMatcher);
 	}
 	
 	@Override
 	protected String getUsername(HttpServletRequest request) {
-		return request.getHeader("Api-key");
+		return request.getParameter("Api-key");
 	}
 	
 	@Override
 	protected String getPassword(HttpServletRequest request) {
-		return request.getHeader("Api-secret");
+		return request.getParameter("Api-secret");
 	}
 }
