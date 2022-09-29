@@ -61,6 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			authorize.antMatchers("/hello").permitAll()
 					 .antMatchers("/h2-console/**").permitAll()
 					 .mvcMatchers(HttpMethod.GET, "/hello-auth").permitAll()
+					 .mvcMatchers(HttpMethod.GET, "/hello-login-admin").hasRole("ADMIN")
+					 .mvcMatchers(HttpMethod.GET, "/hello-login-admin-customer").hasAnyRole("ADMIN", "CUSTOMER")
 					 .mvcMatchers(HttpMethod.GET, "/loginCustomAuth/**").permitAll();
 			
 		}).authorizeRequests().anyRequest().authenticated().and().formLogin()
@@ -96,23 +98,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //	    return http.build();
 //	}
 
-	@Bean
-	public UserDetailsService userDetailsService() {
-		System.out.println("User details called");
-		UserDetails user1 = User.withUsername("Koray").password("{ldap}{SSHA}PXU6F6h+35H4Pw7V+v3cjGtVZvKo9G8WPsFMLQ==") // LDAP
-																														// 12
-				.roles("ADMIN").build();
-
-		UserDetails user2 = User.withDefaultPasswordEncoder().username("admin").password("1234").roles("ADMIN").build();
-
-		UserDetails user3 = User.withUsername("KorayB")
-				.password("{hard-bcrypt}$2a$10$NPNBDd8gqOsVCx4KvXbKzu8lP9RSF1GpVKu.ZQlaxVgKb0m/QfyOm") // bcrypt 12,
-																										// koray custom
-																										// tanmilandi
-				.roles("ADMIN").build();
-		// $2a$15$gY1aOGRstnC.BKt2ew6O7uxvhT8oWaDUXe6Dj3wFc80bVDpDjbFGK
-		return new InMemoryUserDetailsManager(user1, user2, user3);
-	}
+//	@Bean
+//	public UserDetailsService userDetailsService() {
+//		System.out.println("User details called");
+//		UserDetails user1 = User.withUsername("Koray").password("{ldap}{SSHA}PXU6F6h+35H4Pw7V+v3cjGtVZvKo9G8WPsFMLQ==") // LDAP
+//																														// 12
+//				.roles("ADMIN").build();
+//
+//		UserDetails user2 = User.withDefaultPasswordEncoder().username("admin").password("1234").roles("ADMIN").build();
+//
+//		UserDetails user3 = User.withUsername("KorayB")
+//				.password("{hard-bcrypt}$2a$10$NPNBDd8gqOsVCx4KvXbKzu8lP9RSF1GpVKu.ZQlaxVgKb0m/QfyOm") // bcrypt 12,
+//																										// koray custom
+//																										// tanmilandi
+//				.roles("ADMIN").build();
+//		// $2a$15$gY1aOGRstnC.BKt2ew6O7uxvhT8oWaDUXe6Dj3wFc80bVDpDjbFGK
+//		return new InMemoryUserDetailsManager(user1, user2, user3);
+//	}
 	
 	
 //    @Override

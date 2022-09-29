@@ -20,4 +20,19 @@ public class HelloController {
 	public String helloLogin() {
 		return "Hello Login";
 	}
+	
+	@GetMapping("/hello-login-role")
+	public String helloLoginRole() {
+		return "Hello Login Role";
+	}
+	
+	@GetMapping("/hello-login-admin")
+	public String helloLoginOnlyAdmin() {
+		return "Hello Login Only Admin";
+	}
+	
+	@GetMapping("/hello-login-admin-customer")
+	public String helloLoginOnlyAdminCustomer() {
+		return "Hello Login Only Admin and Customer";
+	}
 }

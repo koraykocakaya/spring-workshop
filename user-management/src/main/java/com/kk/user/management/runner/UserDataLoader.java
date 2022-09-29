@@ -21,26 +21,26 @@ public class UserDataLoader implements CommandLineRunner {
 	
 	
 	private void loadUserData() {
-		Authority admin = authorityRepository.save(Authority.builder().role("ADMIN").build());
-		Authority user = authorityRepository.save(Authority.builder().role("USER").build());
-		Authority customer = authorityRepository.save(Authority.builder().role("CUSTOMER").build());
+		Authority admin = authorityRepository.save(Authority.builder().role("ROLE_ADMIN").build());
+		Authority user = authorityRepository.save(Authority.builder().role("ROLE_USER").build());
+		Authority customer = authorityRepository.save(Authority.builder().role("ROLE_CUSTOMER").build());
 		
 		userRepository.save(User.builder()
 						.username("KorayB")
 						.password(passwordEncoder.encode("12"))
-						.authority(user)
+						.authority(customer)
 						.build());
 		
 		userRepository.save(User.builder()
 				.username("Koray")
 				.password(passwordEncoder.encode("12"))
-				.authority(admin)
+				.authority(user)
 				.build());
 		
 		userRepository.save(User.builder()
 				.username("admin")
 				.password(passwordEncoder.encode("1234"))
-				.authority(customer)
+				.authority(admin)
 				.build());
 	}
 	
