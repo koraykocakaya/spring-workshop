@@ -44,7 +44,7 @@ public class JpaUserDetailsService implements UserDetailsService{
 		if(auths != null && auths.size() > 0) {
 			return 		
 					auths.stream()
-					 .map(x -> x.getRole())
+					 .map(x -> x.getPermission())
 					 .map(x -> new SimpleGrantedAuthority(x))
 					 .collect(Collectors.toSet());
 		}

@@ -5,6 +5,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kk.user.management.config.annotation.Auth2Permission;
+
 @RestController
 public class HelloController {
 
@@ -28,18 +30,19 @@ public class HelloController {
 		return "Hello Login Role";
 	}
 	
+	@PreAuthorize("hasAuthority('auth3')")
 	@GetMapping("/hello-login-admin")
 	public String helloLoginOnlyAdmin() {
 		return "Hello Login Only Admin";
 	}
 	
+	@Auth2Permission
 	@GetMapping("/hello-login-admin-customer")
 	public String helloLoginOnlyAdminCustomer() {
 		return "Hello Login Only Admin and Customer";
 	}
 	
-	@PreAuthorize("hasRole('USER','CUSTOMER')")
-//	@Secured(value = {"ROLE_USER", "ROLE_CUSTOMER"})
+	@PreAuthorize("hasAuthority('auth1')")
 	@GetMapping("/hello-login-method")
 	public String helloLoginMethod() {
 		return "Hello Login Method Example";

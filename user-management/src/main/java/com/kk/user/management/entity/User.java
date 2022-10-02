@@ -1,15 +1,18 @@
 package com.kk.user.management.entity;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,8 +25,8 @@ import lombok.Singular;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
 public class User {
 	
 	@Id
@@ -46,11 +49,21 @@ public class User {
 	private boolean isEnabled = true;
 	
 	@Singular
-	@ManyToMany (cascade = CascadeType.MERGE)
-	@JoinTable( name = "user_authority",
+	@ManyToMany (cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	@JoinTable( name = "user_role",
 			joinColumns = {@JoinColumn(name="USER_ID", referencedColumnName = "ID")},
-			inverseJoinColumns = {@JoinColumn(name="AUTHORITY_ID", referencedColumnName = "ID")}
+			inverseJoinColumns = {@JoinColumn(name="ROLE_ID", referencedColumnName = "ID")}
 			)
+	private Set<Role> roles;
+	
+	@Transient
 	private Set<Authority> authorities;
+	
+	public Set<Authority> getAuthorities() {
+		return roles.stream()
+					.map(t -> t.getAuthorities())
+					.flatMap(x -> x.stream())
+					.collect(Collectors.toSet());
+	}
 	
 }

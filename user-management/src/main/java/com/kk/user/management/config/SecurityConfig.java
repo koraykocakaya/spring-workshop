@@ -59,8 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			authorize.antMatchers("/hello").permitAll()
 					 .antMatchers("/h2-console/**").permitAll()
 					 .mvcMatchers(HttpMethod.GET, "/hello-auth").permitAll()
-					 .mvcMatchers(HttpMethod.GET, "/hello-login-admin").hasRole("ADMIN")
-					 .mvcMatchers(HttpMethod.GET, "/hello-login-admin-customer").hasAnyRole("ADMIN", "CUSTOMER")
+//					 .mvcMatchers(HttpMethod.GET, "/hello-login-admin").hasRole("ADMIN")
+//					 .mvcMatchers(HttpMethod.GET, "/hello-login-admin-customer").hasAnyRole("ADMIN", "CUSTOMER")
 					 .mvcMatchers(HttpMethod.GET, "/loginCustomAuth/**").permitAll();
 			
 		}).authorizeRequests().anyRequest().authenticated().and().formLogin()
