@@ -1,5 +1,7 @@
 package com.kk.user.management.controller;
 
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,5 +36,12 @@ public class HelloController {
 	@GetMapping("/hello-login-admin-customer")
 	public String helloLoginOnlyAdminCustomer() {
 		return "Hello Login Only Admin and Customer";
+	}
+	
+	@PreAuthorize("hasRole('USER','CUSTOMER')")
+//	@Secured(value = {"ROLE_USER", "ROLE_CUSTOMER"})
+	@GetMapping("/hello-login-method")
+	public String helloLoginMethod() {
+		return "Hello Login Method Example";
 	}
 }

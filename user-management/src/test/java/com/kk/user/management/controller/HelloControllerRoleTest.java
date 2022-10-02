@@ -65,5 +65,23 @@ class HelloControllerRoleTest {
 		mockMvc.perform(MockMvcRequestBuilders.get("/hello-login-admin-customer").with(SecurityMockMvcRequestPostProcessors.httpBasic("Koray", "12")))
 			.andExpect(MockMvcResultMatchers.status().isForbidden());
 	}
+	
+	@Test
+	public void helloControllerLoginMethodCustomer() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/hello-login-method").with(SecurityMockMvcRequestPostProcessors.httpBasic("KorayB", "12")))
+			.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
+	public void helloControllerLoginMethodUser() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/hello-login-method").with(SecurityMockMvcRequestPostProcessors.httpBasic("Koray", "12")))
+			.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
+	public void helloControllerLoginMethodAdmin() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/hello-login-method").with(SecurityMockMvcRequestPostProcessors.httpBasic("admin", "1234")))
+			.andExpect(MockMvcResultMatchers.status().isForbidden());
+	}
 
 }
