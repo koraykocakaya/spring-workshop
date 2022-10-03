@@ -12,7 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+
+import org.springframework.security.core.CredentialsContainer;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +33,7 @@ import lombok.Singular;
 @AllArgsConstructor
 @Setter
 @Getter
-public class User {
+public class User implements UserDetails, CredentialsContainer{ 
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
@@ -56,14 +62,20 @@ public class User {
 			)
 	private Set<Role> roles;
 	
-	@Transient
-	private Set<Authority> authorities;
 	
-	public Set<Authority> getAuthorities() {
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Customer customer;
+	
+	public Set<GrantedAuthority> getAuthorities() {
 		return roles.stream()
 					.map(t -> t.getAuthorities())
 					.flatMap(x -> x.stream())
+					.map(x -> new SimpleGrantedAuthority(x.getPermission()))
 					.collect(Collectors.toSet());
 	}
 	
+	@Override
+	public void eraseCredentials() {
+		this.password = null;
+	}
 }
