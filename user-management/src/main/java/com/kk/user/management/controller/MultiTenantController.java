@@ -3,6 +3,7 @@ package com.kk.user.management.controller;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +30,10 @@ public class MultiTenantController {
 	@GetMapping("/multiExampleUser")
 	public String getCustomerIdWithAnnotation(@AuthenticationPrincipal User user) {
 		return user.getCustomer() != null ? user.getCustomer().getId() : "" ;
+	}
+	
+	@PostMapping
+	public String getCustomerIdWithAnnotationPost() {
+		return "Example";
 	}
 }

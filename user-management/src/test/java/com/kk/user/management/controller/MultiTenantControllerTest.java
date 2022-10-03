@@ -45,6 +45,22 @@ public class MultiTenantControllerTest {
 	}
 	
 	@Test
+	void testGetCustomerIdWithNoUser() throws Exception{
+		mockMvc.perform(MockMvcRequestBuilders.get(multitenant_URL)
+			.param("customerId", customer2.getId()))
+				.andExpect(MockMvcResultMatchers.status().isUnauthorized());
+	}
+	
+	// csrf check
+	@Test
+	void testGetCustomerIdWithNoUserPost() throws Exception{
+		mockMvc.perform(MockMvcRequestBuilders.post("/multiExampleUser")
+			.header("_csrf", "test")
+			.param("customerId", customer2.getId()))
+				.andExpect(MockMvcResultMatchers.status().isUnauthorized());
+	}
+	
+	@Test
 	void testGetCustomerIdWithAdmin() throws Exception{
 		mockMvc.perform(MockMvcRequestBuilders.get(multitenant_URL)
 			.param("customerId", customer2.getId())

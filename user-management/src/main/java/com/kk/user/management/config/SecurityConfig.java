@@ -52,8 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.addFilterBefore(restHeaderAuthFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
-		.csrf().disable();
+		http.addFilterBefore(restHeaderAuthFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
 		http.addFilterBefore(restParamAuthFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
 		System.out.println("Filter Chain ");
 //		http.authorizeRequests()
@@ -71,7 +70,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					 .mvcMatchers(HttpMethod.GET, "/loginCustomAuth/**").permitAll();
 			
 		}).authorizeRequests().anyRequest().authenticated().and().formLogin()
-		.and().httpBasic();
+		.and().httpBasic()
+		.and().csrf().ignoringAntMatchers("/h2-console/**", "/multiExampleUser");
 		
 		 http.headers().frameOptions().sameOrigin();
 	}
