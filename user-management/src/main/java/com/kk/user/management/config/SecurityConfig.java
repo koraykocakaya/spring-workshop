@@ -73,6 +73,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().httpBasic()
 		.and().csrf().ignoringAntMatchers("/h2-console/**", "/multiExampleUser");
 		
+		// persistent
+//		.and().rememberMe()
+//        .tokenRepository(persistentTokenRepository)
+//        .userDetailsService(userDetailsService);
+
+		// hash based
+        //.rememberMe()
+        //.key("sfg-key")
+        //.userDetailsService(userDetailsService);
+		
 		 http.headers().frameOptions().sameOrigin();
 	}
 	
