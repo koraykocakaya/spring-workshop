@@ -1,5 +1,6 @@
 package com.kk.user.management.entity;
 
+import java.sql.Timestamp;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -43,16 +46,16 @@ public class User implements UserDetails, CredentialsContainer{
 	private String password;
 	
 	@Builder.Default
-	private boolean isAccountNonExpired = true;
+	private boolean accountNonExpired = true;
 	
 	@Builder.Default
-	private boolean isAccountNonLocked = true;
+	private boolean accountNonLocked = true;
 	
 	@Builder.Default
-	private boolean isCredentialsNonExpired = true;
+	private boolean credentialsNonExpired = true;
 	
 	@Builder.Default
-	private boolean isEnabled = true;
+	private boolean enabled = true;
 	
 	@Singular
 	@ManyToMany (cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
@@ -78,4 +81,10 @@ public class User implements UserDetails, CredentialsContainer{
 	public void eraseCredentials() {
 		this.password = null;
 	}
+	
+	@CreationTimestamp
+	private Timestamp createdDate;
+	
+	@UpdateTimestamp
+	private Timestamp lastModifiedDate;
 }
