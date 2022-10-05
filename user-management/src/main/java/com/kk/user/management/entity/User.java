@@ -36,55 +36,58 @@ import lombok.Singular;
 @AllArgsConstructor
 @Setter
 @Getter
-public class User implements UserDetails, CredentialsContainer{ 
-	
+public class User implements UserDetails, CredentialsContainer {
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	private String username;
 	private String password;
-	
+
 	@Builder.Default
 	private boolean accountNonExpired = true;
-	
+
 	@Builder.Default
 	private boolean accountNonLocked = true;
-	
+
 	@Builder.Default
 	private boolean credentialsNonExpired = true;
-	
+
 	@Builder.Default
 	private boolean enabled = true;
-	
+
 	@Singular
-	@ManyToMany (cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
-	@JoinTable( name = "user_role",
-			joinColumns = {@JoinColumn(name="USER_ID", referencedColumnName = "ID")},
-			inverseJoinColumns = {@JoinColumn(name="ROLE_ID", referencedColumnName = "ID")}
-			)
+	@ManyToMany(cascade = { CascadeType.MERGE }, fetch = FetchType.EAGER)
+	@JoinTable(name = "user_role", joinColumns = {
+			@JoinColumn(name = "USER_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
+					@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID") })
 	private Set<Role> roles;
-	
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Customer customer;
-	
+
 	public Set<GrantedAuthority> getAuthorities() {
-		return roles.stream()
-					.map(t -> t.getAuthorities())
-					.flatMap(x -> x.stream())
-					.map(x -> new SimpleGrantedAuthority(x.getPermission()))
-					.collect(Collectors.toSet());
+		return roles.stream().map(t -> t.getAuthorities()).flatMap(x -> x.stream())
+				.map(x -> new SimpleGrantedAuthority(x.getPermission())).collect(Collectors.toSet());
 	}
-	
+
 	@Override
 	public void eraseCredentials() {
 		this.password = null;
 	}
-	
+
 	@CreationTimestamp
 	private Timestamp createdDate;
-	
+
 	@UpdateTimestamp
 	private Timestamp lastModifiedDate;
+
+	@Builder.Default
+	private Boolean userGoogle2fa = false;
+
+	private String google2FaSecret;
+
+	@Transient
+	private Boolean google2faRequired = true;
 }

@@ -25,7 +25,7 @@ import com.kk.user.management.security.RestParamAuthFilter;
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter { 
 	
 	@Bean
 	public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
@@ -71,7 +71,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			
 		}).authorizeRequests().anyRequest().authenticated().and().formLogin()
 		.and().httpBasic()
-		.and().csrf().ignoringAntMatchers("/h2-console/**", "/multiExampleUser");
+		.and().csrf().disable();
+		//ignoringAntMatchers("/h2-console/**", "/multiExampleUser");
 		
 		// persistent
 //		.and().rememberMe()

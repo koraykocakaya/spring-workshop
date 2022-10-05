@@ -20,7 +20,7 @@ public class UserUnlockService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Scheduled(fixedRate =  25000L)
+	@Scheduled(fixedRate =  2500000L)
 	public void checkAccount() {
 		log.debug("Locked account checking");
 		
