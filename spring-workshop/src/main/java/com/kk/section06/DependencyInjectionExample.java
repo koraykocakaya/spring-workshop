@@ -23,6 +23,10 @@ public class DependencyInjectionExample {
 		System.out.println(carBean.getEngine2().getName());
 		System.out.println(carBean.getManualList());
 		
+		
+		
+		Car carBean2 =  context.getBean("carBean2", Car.class);
+		System.out.println(carBean2.getEngine().getName());
 		((ClassPathXmlApplicationContext)context).close();
 	}
 }

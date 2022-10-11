@@ -5,6 +5,7 @@ package com.kk.section01;
  * @author korayk
  */
 public class ExampleBean {
+
 	private String name;
 
 	public ExampleBean() {

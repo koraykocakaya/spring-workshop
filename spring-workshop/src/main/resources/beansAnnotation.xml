@@ -10,9 +10,9 @@
 
 	<context:annotation-config/>
 
-	<bean id="notificationService" class="com.kk.section8.NotificationService"/>
-	<bean id="smsService3" class="com.kk.section8.SmsService"/>
-	<bean id="smsService2" class="com.kk.section8.SmsService"/>
+	<bean id="notificationService" class="com.kk.section08.NotificationService"/>
+	<bean id="smsService3" class="com.kk.section08.SmsService"/>
+	<bean id="smsService2" class="com.kk.section08.SmsService"/>
 	
 
 </beans>

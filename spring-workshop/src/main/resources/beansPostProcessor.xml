@@ -5,12 +5,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="exampleBeanSection3" class="com.kk.section1.ExampleBean"
+	<bean id="exampleBeanSection3" class="com.kk.section01.ExampleBean"
 		init-method="init" destroy-method="doDestroy">
 		<property name="name" value="Mehmet Koray" />
 	</bean>
 
-	<bean id="beanPostProcessor" class="com.kk.section4.ExampleBeanPostProcessor">
+	<bean id="beanPostProcessor" class="com.kk.section04.ExampleBeanPostProcessor">
 
 	</bean>
 

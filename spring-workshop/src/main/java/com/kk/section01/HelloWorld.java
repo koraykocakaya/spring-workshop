@@ -10,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class HelloWorld {
 	
+	
 	public static void main(String[] args) {
 		
 		// classpathteki beans.xml dosyasini contexte yukledik
