@@ -10,14 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 1. SecurityConfig classi uzerinden ayarlar verebilmekteyiz.
- *  Burada / istekleri icin authentication gerekmeyecegi, dgier istekler icin ise basic auth kullancagimizi belirtmis olduk
- *  .formLogin() ile de herhangi bir URL'e gitmek istedigimizde username password icin popup yerine login'e yonlendirmesini saglamis olduk
- * 2. SpS'in kendi InMemoryUserDetailsManager kullanarak User tanimi yapabildik boylece bu user ile login olabiliriz
- *  Basic Auth oldugu icin her istekte username, password bilgisini gondermemiz gerekecektir
- *  User'i bir sekilde setlemezsek Sps'in default User'i user ve password'u de random bir UUID olacaktir ve console'a acilis aninda basilacaktir
- * 3.
- *
+ * 1. Rol bazli yetki verilebilmektedir, burada Config dosyasi icerisinde matcher ile hangi rolun yetkisi oldugu verilebildi
+ *  Boylece roel sahip olmayan userlarin yetkisi olmayan API'ye istek atmasi engellendi
+ * 2. Bununla birlikte ayrica authority de verilebilmektedir, temelde Role Authority'i kapsar.
+ *  Bir role bagli n tane authority olabilmektedir ve authority uzerinden de yetkilendirme yapilabilemektedir
+ * 3. Bu ornekte de PersonControllerindaki Post req icin authority tanimlandi ve bsadece bu authoritye sahip User bu istegi atabildi
+ *  Burada rolden farkli olarak Set<GrantedAuthority> setlendi, bunun icin sadece permission name'ini GrantedAuthority cevirmek yeterli oldu
+ * 4. Burada Post kullandigimiz icin ayrica anlik CSRF'i disabled ettik
  * @author korayk
  */
 @RestController

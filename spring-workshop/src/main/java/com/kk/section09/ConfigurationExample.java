@@ -8,7 +8,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 
 /**
  * 1. Configuration xml kullanmadan direkt Java uzerinden de verilebilmektedir, Bunun icin ilgili classa @Configuration verilmelidir
- * 2. Burada JAva ile conf verdigimiz icin AnnotationConfigApplicationContext ile IOC Containeri initialize etmekteyiz
+ * 2. Burada Java ile conf verdigimiz icin AnnotationConfigApplicationContext ile IOC Containeri initialize etmekteyiz
  * 3. Configuration classi icerisinde @Bean ile metot isminde ilgili beanler yaratimaktadir, bu beanlere class uzerinden de erisilebilmektedir
  * 4. Burada ek olarak @Bean("...") vererek Bean'e ayrica isim verilebilmektedir
  * 5. Birden cok Configuration classi verilebilmektedir, bunlar register ile contexte yuklenebilmektedir, register sonrasi refresh cagirlmasi gerekmektedir

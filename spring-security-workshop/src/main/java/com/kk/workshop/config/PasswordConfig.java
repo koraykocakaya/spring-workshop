@@ -1,4 +1,4 @@
-package com.kk.workshop.controller;
+package com.kk.workshop.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
