@@ -10,14 +10,15 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 1. Rol bazli yetki verilebilmektedir, burada Config dosyasi icerisinde matcher ile hangi rolun yetkisi oldugu verilebildi
- *  Boylece roel sahip olmayan userlarin yetkisi olmayan API'ye istek atmasi engellendi
- * 2. Bununla birlikte ayrica authority de verilebilmektedir, temelde Role Authority'i kapsar.
- *  Bir role bagli n tane authority olabilmektedir ve authority uzerinden de yetkilendirme yapilabilemektedir
- * 3. Bu ornekte de PersonControllerindaki Post req icin authority tanimlandi ve bsadece bu authoritye sahip User bu istegi atabildi
- *  Burada rolden farkli olarak Set<GrantedAuthority> setlendi, bunun icin sadece permission name'ini GrantedAuthority cevirmek yeterli oldu
- * 4. Burada Post kullandigimiz icin ayrica anlik CSRF'i disabled ettik
- * 5. AntMatcherlarda Order onemli, bu acidan geneli ozelden once yazmamaliyiz
+ * 1. Basic Auth yerine Form Auth da kullanabiliriz, boylece kullanici bir kere login olduktan sonra
+ *  sessionId Cookie setlenecek ve logout veya expired olana kadar sistemdeki istek atabilecektir
+ * 2. Burada kendi Sps'in kendi logini haric custom Login sayfasi da yapabilmek icin ayrica TemplateController ve login.html yaratildi
+ *  Burada thymeleaf kullanarak login.html goruntulenmesi saglandi
+ * 3. Ek olarak SecurityConfig uzerindne login basarili oldugunda defaultURL de verilebilir
+ * 4. Ayrica Sps'de direkt remember-me setlenebilir. Bunu direkt html sayfasi uzerinden bir checkbox yardimiyla gonderebiliriz
+ *  Eger configde de izin verirsek remember-me setlenecektir ve sessionId olmasa bile remember-me cookie uzerinden istek atmaya devam edebilecektir
+ * 5. username, password ve remember-me otomatik oalrak eslesecektir, ancak farkli id ile gelecekse bunu Config'de parameter uzerinden setleyebilmekteyiz
+ * 
  * @author korayk
  */
 @RestController

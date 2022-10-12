@@ -26,22 +26,29 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                //.csrf().disable()
+                .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/")
-                        .permitAll()
-                    .antMatchers("/api/v1/students/**")
-                        .hasRole("ADMIN")
-                    .antMatchers(HttpMethod.POST, "/api/v1/person")
-                        //.hasRole("ADMIN")
-                        .hasAuthority(UserPermission.PERSON_WRITE.getPermission())
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/api/v1/students/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.POST, "/api/v1/person").hasAuthority(UserPermission.PERSON_WRITE.getPermission())
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic()
+                .formLogin()
+                    .loginPage("/login").permitAll()
+                    .defaultSuccessUrl("/person", true)
+                    .usernameParameter("username")
+                    .passwordParameter("password")
                 .and()
-                .formLogin(); // basic auth icin popup yerine login ekranina yonlendirir
-
+                .rememberMe()
+                    .rememberMeParameter("remember-me")
+                .and()
+                .logout()
+                    .clearAuthentication(true)
+                    .invalidateHttpSession(true)
+                    .deleteCookies("remember-me", "JSESSIONID")
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login");
         return http.build();
     }
 
