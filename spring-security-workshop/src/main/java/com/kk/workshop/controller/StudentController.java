@@ -17,6 +17,7 @@ import java.util.List;
  * 3. Bu ornekte de PersonControllerindaki Post req icin authority tanimlandi ve bsadece bu authoritye sahip User bu istegi atabildi
  *  Burada rolden farkli olarak Set<GrantedAuthority> setlendi, bunun icin sadece permission name'ini GrantedAuthority cevirmek yeterli oldu
  * 4. Burada Post kullandigimiz icin ayrica anlik CSRF'i disabled ettik
+ * 5. AntMatcherlarda Order onemli, bu acidan geneli ozelden once yazmamaliyiz
  * @author korayk
  */
 @RestController
