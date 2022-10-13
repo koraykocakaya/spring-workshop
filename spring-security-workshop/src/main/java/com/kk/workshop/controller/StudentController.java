@@ -18,7 +18,7 @@ import java.util.List;
  * 4. Ayrica Sps'de direkt remember-me setlenebilir. Bunu direkt html sayfasi uzerinden bir checkbox yardimiyla gonderebiliriz
  *  Eger configde de izin verirsek remember-me setlenecektir ve sessionId olmasa bile remember-me cookie uzerinden istek atmaya devam edebilecektir
  * 5. username, password ve remember-me otomatik oalrak eslesecektir, ancak farkli id ile gelecekse bunu Config'de parameter uzerinden setleyebilmekteyiz
- * 
+ *
  * @author korayk
  */
 @RestController
