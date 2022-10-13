@@ -10,15 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 1. Basic Auth yerine Form Auth da kullanabiliriz, boylece kullanici bir kere login olduktan sonra
- *  sessionId Cookie setlenecek ve logout veya expired olana kadar sistemdeki istek atabilecektir
- * 2. Burada kendi Sps'in kendi logini haric custom Login sayfasi da yapabilmek icin ayrica TemplateController ve login.html yaratildi
- *  Burada thymeleaf kullanarak login.html goruntulenmesi saglandi
- * 3. Ek olarak SecurityConfig uzerindne login basarili oldugunda defaultURL de verilebilir
- * 4. Ayrica Sps'de direkt remember-me setlenebilir. Bunu direkt html sayfasi uzerinden bir checkbox yardimiyla gonderebiliriz
- *  Eger configde de izin verirsek remember-me setlenecektir ve sessionId olmasa bile remember-me cookie uzerinden istek atmaya devam edebilecektir
- * 5. username, password ve remember-me otomatik oalrak eslesecektir, ancak farkli id ile gelecekse bunu Config'de parameter uzerinden setleyebilmekteyiz
- *
+ * 1. FormLogin haricinde JWT üzerinden de işlem yapabilmekteyiz.
+ *  Bunun için öncelikle Jwt için bir filter  tanımlayıp, Username Password doğru mu onu kontrol ettik.
+ *  Eğer authenticate olduysa da library yardımıyla JWT token uretildi
+ * 2. Burada onemli noktalardan biri ise Configurationda bu filteri calistirmasi icin ekledik ve sessionin stateless olacagini belirttik
  * @author korayk
  */
 @RestController
